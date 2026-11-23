@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Scorecut</title><link rel="icon" href="/scorecut.ico"><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header><div class="brand"><img src="/scorecut.png" alt="" width="36" height="36"> Scorecut</div>
+<input id="name" aria-label="Project name" value="Untitled score video">
+<div class="head-actions"><span id="status" role="status"></span><button id="new">New</button><select id="projects" aria-label="Open project"><option value="">Open project</option></select><button id="save">Save</button><button class="primary" id="export">Export MP4</button></div></header>
+<main>
+<aside class="panel library"><h2>Media bin</h2><button id="import" class="import">＋ Import files</button><input id="files" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,.wav,.mp3,.m4a,.ogg,.flac,.mp4,.mov,.webm" multiple hidden>
+<div id="media" class="media"></div><button id="title">＋ Title card</button></aside>
+<section class="viewer panel" aria-label="Preview"><div class="viewbar"><h2>Preview</h2><span id="previewLabel">16:9</span></div><div class="stage" id="stage"><div id="frame"></div><div id="placeholder"><img src="/scorecut.png" alt=""><strong>Start with your score</strong><span>Import a PDF and your recording to begin.</span><button class="primary" id="beginImport">Import files</button></div></div>
+<div class="transport"><button id="home" aria-label="Go to start">↤</button><button id="play" aria-label="Play">▶</button><output id="clock">00:00.00</output><input id="seek" type="range" min="0" max="12" step=".01" value="0" aria-label="Playhead position"></div></section>
+<aside class="panel inspector"><h2>Clip properties</h2><div id="inspector">Select a clip on the timeline.</div></aside>
+<section class="panel timeline"><div class="timelinebar"><h2>Timeline</h2><div><button id="undo" title="Ctrl+Z" disabled>Undo</button><button id="redo" title="Ctrl+Y or Ctrl+Shift+Z" disabled>Redo</button><button id="timing" class="accent" aria-pressed="false" title="Hold each score system until you press C">Time systems</button><button id="queueExisting" title="Move existing system clips off the timeline for fresh timing">Queue existing systems</button><button id="cut"><span id="cutLabel">Next system</span><kbd>C</kbd></button><button id="split">Split at playhead</button><button id="repeat" class="accent">＋ Add verse</button><button id="remove">Delete clip</button><label class="zoom">Zoom <input id="zoom" type="range" min="8" max="100" value="28" aria-label="Timeline zoom"></label></div></div>
+<div class="scroller" id="scroller"><div id="lanes"></div></div></section>
+</main>
+<dialog id="exportDialog"><form method="dialog"><div class="viewbar"><h2>Export MP4</h2><button id="closeExport" value="close">Close</button></div><label>Resolution <select id="resolution"><option value="720">720p</option><option value="1080" selected>1080p</option><option value="1440">1440p</option><option value="2160">4K UHD</option></select></label><p id="progress" role="status"></p><button class="primary" id="render" type="button">Render video</button><a id="download" hidden>Download MP4</a></form></dialog>
+<dialog id="cropDialog" class="crop-dialog">
+<form method="dialog">
+<div class="viewbar"><h2>Crop score or image</h2><button value="cancel">Cancel</button></div>
+<p class="hint" id="cropName"></p>
+<div class="crop-toolbar"><button type="button" id="systemsAuto" class="accent">Find systems</button><button type="button" id="cropAuto">Auto crop</button><button type="button" id="cropReset">Reset crop</button><label for="cropZoom">Zoom</label><select id="cropZoom"><option value="fit">Fit page</option><option value="width">Fit width</option><option value="2">2× fit</option><option value="3">3× fit</option><option value="4">4× fit</option></select><output id="cropStatus" role="status"></output></div>
+<div id="cropStage" tabindex="0" aria-label="Scrollable crop preview"><div id="cropMat"><div id="cropSurface"><img id="cropImage" alt="Original uncropped page" draggable="false"><div id="systemGuides" hidden></div><div id="cropShade" aria-hidden="true"></div><div id="cropBox"><span data-edge="nw"></span><span data-edge="ne"></span><span data-edge="sw"></span><span data-edge="se"></span><span data-edge="n"></span><span data-edge="e"></span><span data-edge="s"></span><span data-edge="w"></span></div></div></div></div>
+<p class="hint">Drag the edges or corners to refine the crop. Shift-drag draws a new box. Scroll to move around when zoomed in.</p>
+<div class="crop-options" id="cropNumbers"></div>
+<div id="systemOptions" hidden><div id="systemCuts" aria-label="System boundaries"></div><button type="button" id="addSystemCut">＋ Add boundary</button><button type="button" id="exitSystems">Back to crop</button></div>
+<div class="dialog-actions"><label><input id="cropAll" type="checkbox"> Apply to every use of this page</label><button class="primary" type="button" id="cropApply">Apply crop</button></div>
+</form></dialog>
+<dialog id="verseDialog"><form method="dialog" id="verseForm">
+<div class="viewbar"><h2>Add verse</h2><button value="cancel" formnovalidate>Cancel</button></div>
+<label>Copy score from <select id="verseSource"></select></label>
+<label>New verse name <input id="verseName" required maxlength="50"></label>
+<label>Verse begins at (seconds) <input id="verseStart" type="number" min="0" step=".001" required></label>
+<div class="verse-options"><button type="button" id="verseUsePlayhead">Use playhead</button><button type="button" id="verseUseEnd">After last verse</button></div>
+<p class="hint" id="verseHelp">Score cuts are copied. Your recording keeps its original timing.</p>
+<p id="verseError" role="status"></p>
+<button class="primary" value="add">Add verse</button>
+</form></dialog>
+<script src="/app.js"></script></body></html>
