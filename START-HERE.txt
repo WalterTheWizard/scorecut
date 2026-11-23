@@ -1,0 +1,47 @@
+SCORECUT · Windows score video editor
+
+1. Extract the ZIP into a folder.
+2. Run Install-Scorecut.cmd from that folder.
+3. Open Scorecut from the Windows Start menu after installation.
+
+Setup needs internet to fetch Python 3.12 (if necessary) and the PDF/video
+components. It installs for your Windows account. The editor runs locally
+and opens an Edge app window, or your default browser if Edge is missing.
+
+MAKE A VIDEO
+
+Import a PDF and your WAV or MP3 recording. PDF pages are added in order.
+Audio starts at zero on its own track. Click an item in Media to place
+another copy at the playhead. To show one system, select a picture clip and choose Crop image.
+Draw a box on the page, move it, or resize it by dragging a corner.
+Trim white margins can frame the printed area of a clean PDF page.
+Apply to every use of this page only if all copies need the same crop.
+Use Duplicate as next clip and crop each copy to show several systems.
+
+Select the first picture clip. As the recording plays, press C at the
+next page turn. Set next cut ends the selected clip at the playhead,
+moves following picture clips, and selects the next one.
+
+For verse two, choose Add verse above the timeline. Pick a verse to copy,
+enter a name, and use the playhead time or place it after the last verse.
+If the start is inside an existing score clip, that clip ends at the
+new verse. Later picture clips move to make room. Audio timing stays put.
+Click a marker in the Verses lane to jump there. Adjust each verse's cuts
+independently. Rename one through the properties of any of its clips.
+
+Use Undo (Ctrl+Z) and Redo (Ctrl+Y or Ctrl+Shift+Z) above the timeline.
+The last 75 edits are available while the project is open.
+
+Drag clips to move them. Use Split at playhead, or edit length and
+source trim in Clip properties. Audio tracks have volume, mute, and
+fade controls. When you import a video, its first soundtrack appears on
+its own audio track. Move or trim the two clips separately as needed.
+With overlapping picture clips, the most recently added clip is on top.
+
+Add title cards at the playhead and edit the text, colours, and length.
+To make room for an intro, move the existing clips to later start times.
+Use Export MP4 to render in 720p, 1080p, 1440p, or 4K. Click Download MP4
+once rendering finishes.
+
+Projects and their imported media are kept in Scorecut Projects under
+your Windows user folder. Back up that folder to keep your projects.
